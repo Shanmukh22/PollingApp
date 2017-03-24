@@ -1,0 +1,117 @@
+﻿<!--
+Component :                             UI for creating a survey by the authorized users
+Author:                                 Rajashekar Goud Korakoppula
+Use of the component in system design:  Provides UI that is accessed by the users to create survey
+Written and revised:                    11/22/2016
+Reason for component existence:         Provides an interface for the user to create a survey in the system
+Component usage of data structures, algorithms and control (if any):
+    The component displays the appropriate fields to the user to create a survey. The fields include:
+        Survey Heading, Survey Question, Survey Type (Public/private), Group Names (if survey type is private), Buttons 'Create Survey' and 'Cancel'
+    The authorized user needs to fill all the fields and click on 'Create Survey' button to create the Survey in the system
+    The user can click on 'Cancel' button to cancel the survey creation
+-->
+<form name="surveyForm">
+    <div class="primary callout" ng-controller="SurveyController" ng-init="LoadGroups()" >
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Title <small>required</small>
+                    <input ng-required="true" type="text" placeholder="Title" ng-model="surveyTitle" />
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Description <small>required</small>
+                    <input ng-required="true" type="text" placeholder="Enter the survey description" ng-model="description" />
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+
+                    Add Question <i class="fi-plus" ng-click="AddQuestion()"></i> 
+                    
+                    </label>
+                <label ng-show="(questions.length>1)">Remove Question <i class="fi-minus" ng-click="RemoveQuestion()"></i></label>
+                    <ul>
+                       
+                        <li ng-repeat="question in questions track by $index" style="list-style-type:none;">
+                           {{$index+1}}) Survey Question <small>required</small>
+                            <input ng-required="true" type="text" placeholder="Enter the survey question" ng-model="question.description" />
+                            <div class="row">
+                                <div class="small-12 columns">
+                                    <label>
+                                        Survey Options <small>required</small><br />
+                                        (At least 2 Survey options are required. Click on the '+' to add Survey Options)<br />
+                                    </label>
+                                    <ul>
+                                        <li ng-repeat="answer in question.Answers track by $index" style="list-style-type:none;">
+                                            <p>
+                                                {{$index+1}}) <input ng-required="true" type="text" ng-model="answer.description"  />
+                                            </p>
+
+                                        </li>
+                                        <li style="list-style-type:none;">
+                                        
+                                          Add Option  <i class="fi-plus" ng-click="AddOption(question)"></i> 
+                                        </li>
+                                        <li ng-show="(question.Answers.length>2)" style="list-style-type:none;">
+
+                                            Remove Option  <i class="fi-minus" ng-click="RemoveOption(question)"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </li>
+                        
+                    </ul>
+                
+            </div>
+        </div>
+       
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Survey Type <small>required</small>
+                    <select id="surveyType" name="surveyType"  ng-change="TypeChanged()" ng-model="surveyType">
+                        <option value="Public">Public</option>
+                        <option value="Private">Private</option>
+                    </select>
+                </label>
+
+            </div>
+        </div>
+        <div class="row" ng-show="(surveyType=='Private')">
+            <div class="large-12 columns">
+                <label>
+                    Groups' Names <small>required</small><br />
+                    (At least 1 group name is required. Use ctrl to select multiple)<br />
+                    <!--<input type="text" placeholder="Enter the names of groups" ng-model="groupNames"/>-->
+                </label>
+                <select ng-required="(surveyType=='Private')" name="multipleSelect" id="multipleSelect" ng-model="select"  multiple >
+                    <option ng-repeat="group in groups" value="{{group.Id}}">{{group.Name}}</option>
+                </select>
+                <!--<ul>
+                    <li ng-repeat="group in groups track by $index" style="list-style-type:none;">
+                        <input type="text" ng-model="group.name" />
+                    </li>
+                    <li style="list-style-type:none;">
+                        <i class="fi-plus" ng-click="AddGroup(group)"></i>
+                    </li>
+                </ul>-->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-3 columns">
+    
+                <button type="button" class="button round" ng-disabled="(surveyForm.$invalid)" ng-click="CreateSurvey($event)">Create Survey</button>
+                <a href="#/dashboard" class="button round">Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>
+

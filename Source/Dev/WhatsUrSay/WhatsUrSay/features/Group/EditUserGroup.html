@@ -1,0 +1,41 @@
+﻿
+    <div class="primary callout" ng-controller="EditGroupController" ng-init="LoadGroups()">
+        <form name="editGroupForm">
+            <div class="row">
+                <div class="large-12 columns">
+                    <label>
+                        {{title}}
+                    </label>
+                    <select ng-required="true" name="multipleSelect" ng-change="ConvertToObject()" id="multipleSelect" ng-model="selectedGroup">
+                        <option ng-repeat="group in groups" value="{{group}}">{{group.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    Select Users to Delete<br />
+                    <select  name="multipleSelect" id="multipleSelect" ng-model="deletedUsers" multiple>
+                        <option ng-repeat="userGroup in selected.User_Group" value="{{userGroup.User.id}}">{{userGroup.User.emailId}}</option>
+                    </select>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    Select Users to Add<br />
+                    <select name="multipleSelect" id="multipleSelect" ng-model="addedUsers" multiple>
+                       
+                        <option ng-repeat="user in UsersNotinGroup" value="{{user.id}}">{{user.emailId}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-3 columns">
+                    <button type="button" class="button round" ng-disabled="(deletedUsers.length<1&&addedUsers.length<1)" ng-click="UpdateGroup($event)">Update</button>
+                    <a href="#/dashboard" class="button round">Cancel</a>
+                </div>
+            </div>
+        </form>
+            </div>
+
+</div>
+

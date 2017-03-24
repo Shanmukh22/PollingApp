@@ -1,0 +1,108 @@
+﻿<!--
+Component :                             UI for creating a poll by the authorized users    
+Author:                                 Sreedevi Koppula
+Use of the component in system design:  Provides UI that is accessed by the users to create polls
+Written and revised:                    11/11/2016
+Reason for component existence:         Provides an interface for the user to create a poll in the system
+Component usage of data structures, algorithms and control (if any): 
+    The component displays the appropriate fields to the user to create a poll. The fields include: 
+        Poll Heading, Poll Question, Poll Type (Public/private), Group Names (if poll type is private), Buttons 'Create Poll' and 'Cancel'
+    The authorized user needs to fill all the fields and click on 'Create Poll' button to create the poll in the system
+    The user can click on 'Cancel' button to cancel the poll creation
+-->
+<form name="pollForm">
+    <div class="primary callout" ng-controller="PollController" ng-init="LoadDataNecessary()">
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Title <small>required</small>
+                    <input type="text" placeholder="Title" ng-model="pollTitle" ng-required="true"/>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Description <small>required</small>
+                    <input type="text" placeholder="Enter the poll description" ng-model="description" ng-required="true"/>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Poll Question <small>required</small>
+                    <input type="text" placeholder="Enter the poll question" ng-model="question" ng-required="true"/>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Poll Options <small>required</small><br />
+                    (At least 2 Poll options are required. Click on the '+' to add Poll Options)<br />
+                </label>
+                <ul>     
+                    <li ng-repeat="option in options track by $index" style="list-style-type:none;">
+                        <p>
+                            {{$index+1}})
+                            <input type="text" ng-required="true" ng-model="option.description" />
+                        </p>
+                    </li>
+                    <li style="list-style-type:none;">
+                       Add Option <i class="fi-plus" ng-click="AddOption(option)"></i> <!--<button ng-click="AddOption(option)">Add</button>-->
+                    </li>     
+                    <li ng-show="(options.length>2)" style="list-style-type:none;">
+
+                        Remove Option  <i class="fi-minus" ng-click="RemoveOption(option)"></i>
+                    </li>    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+                <div class="large-12 columns">
+                    <label>
+                        Poll Type <small>required</small>
+                        <select id="pollType" name="pollType" ng-model="pollType" ng-change="TypeChanged()" ng-required="true">
+                            <option value="private">Private</option>
+                            <option value="public">Public</option>
+                        </select>
+                    </label>
+                </div>
+         </div>   
+            <div class="row" ng-show="(pollType=='private')">
+                <div class="large-12 columns">
+                    <label>
+                        Groups' Names <small>required</small><br/>
+                        (At least 1 group name is required. Click on the '+' to add Group)<br/>
+                        <!--<input type="text" placeholder="Enter the names of groups" ng-model="groupNames"/>-->
+                    </label>
+                    <select ng-required="(pollType=='private')" name="multipleSelect" id="multipleSelect" ng-model="select" multiple>
+                        <option ng-repeat="group in groupDetails" value="{{group.name}}">{{group.name}}</option>
+                    </select>
+                    <!--
+                    <ul>
+                        <li ng-repeat="group in groups track by $index" style="list-style-type:none;">
+                            <input type="text" ng-model="group.name" ng-required="true"/>
+                        </li>
+                        <li style="list-style-type:none;">
+                           Add Group <i class="fi-plus" ng-click="AddGroup(group)"></i>
+                        </li>
+                        <li ng-show="(groups.length>1)" style="list-style-type:none;">
+
+                            Remove Group  <i class="fi-minus" ng-click="RemoveGroup(group)"></i>
+                        </li>
+                    </ul>
+                        -->
+                </div>
+            </div>
+        
+        <div class="row">
+            <div class="large-3 columns">
+                <button type="button" class="button round" ng-disabled="(pollForm.$invalid)" ng-click="CreatePoll($event)">Create Poll</button>
+                <!--<button type="button" class="button round" ng-disabled="(!(pollTitle && description && (pollType=='private') && (groups.length>0) && (options.length>1)) && !(pollTitle && description && (options.length>1) && (pollType=='public')))" ng-click="CreatePoll($event)">Create Poll</button>-->
+                <a href="#/dashboard" class="button round">Cancel</a>
+            </div>
+        </div>
+   </div>
+</form>

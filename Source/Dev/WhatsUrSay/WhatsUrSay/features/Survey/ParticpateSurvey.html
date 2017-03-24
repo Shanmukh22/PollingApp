@@ -1,0 +1,61 @@
+﻿<!--
+Component :                             UI for creating a survey by the authorized users
+Author:                                 Rajashekar Goud Korakoppula
+Use of the component in system design:  Provides UI that is accessed by the users to create survey
+Written and revised:                    11/22/2016
+Reason for component existence:         Provides an interface for the user to create a survey in the system
+Component usage of data structures, algorithms and control (if any):
+    The component displays the appropriate fields to the user to create a survey. The fields include:
+        Survey Heading, Survey Question, Survey Type (Public/private), Group Names (if survey type is private), Buttons 'Create Survey' and 'Cancel'
+    The authorized user needs to fill all the fields and click on 'Create Survey' button to create the Survey in the system
+    The user can click on 'Cancel' button to cancel the survey creation
+-->
+<form name="surveyForm">
+    <div class="primary callout" ng-controller="ParticipateSurveyController" ng-init="FillSurvey()">
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Title :{{title}}
+                    
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                    Description :{{description}}                          
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <ul>
+                    <li ng-repeat="question in questions track by $index" style="list-style-type:none;">
+                        {{$index+1}}) Survey Question :{{question.description}}
+                        <div class="row">
+                            <div class="small-12 columns">
+                                <ul>
+                                    <li ng-repeat="answer in question.Answers track by $index" style="list-style-type:none;">
+                                        <p>
+                                            
+                                            {{$index+1}}) <input ng-required="true" ng-value="answer"  type="radio"  ng-model="selectedAnswerModel[$parent.$index]" /> {{answer.description}}
+                                        </p>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-3 columns">
+                <button type="button" class="button round" ng-disabled="(surveyForm.$invalid)" ng-click="SubmitSurvey($event)">Submit Survey</button>
+                <a href="#/dashboard" class="button round">Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>
+

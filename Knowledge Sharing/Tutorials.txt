@@ -1,0 +1,12 @@
+1. Techlogies involved
+	AngularJS
+	TypeScript
+	Microsoft WebAPI
+	BootStrap
+	HTML5
+	CSS
+	
+2. Links
+	•http://www.tutorialspoint.com/angularjs/
+	•https://docs.angularjs.org/tutorial
+	•https://material.angularjs.org/latest/

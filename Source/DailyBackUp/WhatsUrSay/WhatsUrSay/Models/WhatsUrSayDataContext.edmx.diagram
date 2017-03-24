@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="02c7bd9bcbb448c58cca52fde8150ab6" Name="Diagram1">
+        <EntityTypeShape EntityType="DSEModel.Activity" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSEModel.Activity_Group" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSEModel.Answer" Width="1.5" PointX="9.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSEModel.Category" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSEModel.Group" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSEModel.Question" Width="1.5" PointX="7.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSEModel.Type" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSEModel.User" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSEModel.User_Answer" Width="1.5" PointX="12" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSEModel.User_Group" Width="1.5" PointX="7.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSEModel.User_Request" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSEModel.User_Roles" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="DSEModel.FK_Activity_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_Activity_Group_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_Activity_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_Activity_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_Answer_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_Question_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_User_Answer_User_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_Activity_Group_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_Answer_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_User_Answer_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_Group_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_User_Group_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_User_Answer_User_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_User_Answer_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_User_Group_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_User_Request_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DSEModel.FK_User_User_Roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

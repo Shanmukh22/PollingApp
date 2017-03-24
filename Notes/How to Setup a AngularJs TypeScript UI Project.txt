@@ -1,0 +1,9 @@
+1. IDE required: Visual Studio 2015
+2. Steps to Create a Project:
+	i)Open Visual Studio.
+	ii)Select the file menu option from the open bar.
+	iii)Select New, Select Project.
+	iv)Select the typescript option from the menu on the left hand side and select the "HTML Application with TypeScript Option".
+	v)Type the name of your application in Name text box and click on OK.
+	vi)This created a type script application.
+3. Adding AngularJS and required components using NuGet Package Manager.

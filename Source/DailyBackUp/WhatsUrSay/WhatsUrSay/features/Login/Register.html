@@ -1,0 +1,54 @@
+﻿<!--
+ The file is named: Register.
+ The file is of .html extention.
+ The file is created by Abhinav.
+ This is basically .html file named Register which provides the basic details needed for the new user to "Register".
+ -->
+<!--For Registration the fiels provided are email id, password, Confirm Password, Name, Role, Reason -->
+
+<form data-abide novalidate>
+    
+    <div class="primary callout">
+        <div class="row">
+            <div class="large-12 columns">
+                <label for="emailId" class="error" role="alert">
+                    Email Id <small>required</small>
+                    <input type="text" placeholder="Email Id" name="emailId" id="emailId" ng-model="user.emailId">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label for="password">
+                    Password <small>required</small>
+                    <input type="password" id="password" placeholder="Password" name="password" ng-model="user.password"/>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label for="confirmPassword" class="">
+                    Confirm Password <small>required</small>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" ng-model="user.confirmPassword" name="confirmPassword">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Name <small>required</small>
+                    <input type="text" id="name" placeholder="Name" name="name" ng-model="user.name">
+                </label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="large-3 columns">
+                <button type="button" class="button round" ng-click="Register($event)">Register</button>
+                <a href="#/home" class="button round">Cancel</a>
+            </div>
+        </div>
+    </div>
+
+</form>
+<script>$(document).foundation();</script>

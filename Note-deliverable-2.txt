@@ -1,0 +1,12 @@
+Deliverable 2 Document Listing:
+
+Consolidated Document is placed at the below specified github location:
+	Documents/Reports/Project Report_Deliverable2.docx
+
+Individual Files:
+	1. System Features: Documents/Deliverables/System Features.docx
+	2. Non Functional Requirements: Documents/Deliverables/Non-Functional Requirements
+	3. Meeting minutes: Documents/Minutes of Meetings.
+	4. Gantt charts: Charts/
+	5. Updated Risk Management Plan: Documents/Deliverables/Risk Management Plan Updated.docx
+	

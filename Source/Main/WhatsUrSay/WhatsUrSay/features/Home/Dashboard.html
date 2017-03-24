@@ -1,0 +1,362 @@
+﻿<div ng-cloak="">
+    <md-tabs md-dynamic-height="" md-border-bottom="">
+        <md-tab label="Polls">
+            <md-tabs class="callout" style="margin-top:1rem">
+                <md-tab label="Private">
+                    <table ng-if="privatePolls.length!=0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Title
+                                </th>
+                                <th>
+                                    Descrption
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="pPoll in privatePolls">
+                                <td>
+                                    {{pPoll.heading}}
+                                </td>
+                                <td>
+                                    {{pPoll.description}}
+                                </td>
+                                <td>
+                                    <a ng-if="!pPoll.participated" href="#/participatePoll/{{pPoll.id}}">
+                                        Participate
+                                    </a>
+                                    <a ng-if="pPoll.participated" href="#/viewPollResults/{{pPoll.id}}">
+                                        View Results
+                                    </a>
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if="privatePolls.length==0">
+                        No Private Polls Available.
+                    </div>
+                </md-tab>
+                <md-tab label="Public">
+                    <table ng-if="publicPolls.length!=0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Title
+                                </th>
+                                <th>
+                                    Descrption
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="pPoll in publicPolls">
+                                <td>
+                                    {{pPoll.heading}}
+                                </td>
+                                <td>
+                                    {{pPoll.description}}
+                                </td>
+                                <td>
+                                    <a ng-if="!pPoll.participated" href="#/participatePoll/{{pPoll.id}}">
+                                        Participate
+                                    </a>
+                                    <a ng-if="pPoll.participated" href="#/viewPollResults/{{pPoll.id}}">
+                                        View Results
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if="publicPolls.length==0">
+                        No Public Polls Available.
+                    </div>
+                </md-tab>
+                <md-tab ng-if="userInfo.role==3 || userInfo.role==2" label="Created By Me">
+                    <table ng-if="createdPolls.length!=0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Title
+                                </th>
+                                <th>
+                                    Descrption
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="cPoll in createdPolls">
+                                <td>
+                                    {{cPoll.heading}}
+                                </td>
+                                <td>
+                                    {{cPoll.description}} 
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if="createdPolls.length==0">
+                        No Polls created by you.
+                    </div>
+                </md-tab>
+            </md-tabs>
+        </md-tab>
+        <md-tab label="Surveys">
+            <md-tabs class="callout" style="margin-top:1rem">
+                <md-tab label="Private">
+                    <table ng-if="privateSurveys.length!=0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Title
+                                </th>
+                                <th>
+                                    Descrption
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="pSurvey in privateSurveys">
+                                <td>
+                                    {{pSurvey.heading}}
+                                </td>
+                                <td>
+                                    {{pSurvey.description}}
+                                </td>
+                                <td>
+                                    <a ng-if="!pSurvey.participated" href="#/participateSurvey/{{pSurvey.id}}">
+                                        Participate
+                                    </a>
+                                    <a ng-if="pSurvey.participated" href="#/viewSurveyResults/{{pSurvey.id}}">
+                                        View Results
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if="privateSurveys.length==0">
+                        No Private Surveys Available.
+                    </div>
+                </md-tab>
+                <md-tab label="Public">
+                    <table ng-if="publicSurveys.length!=0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Title
+                                </th>
+                                <th>
+                                    Descrption
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="pSurvey in publicSurveys">
+                                <td>
+                                    {{pSurvey.heading}}
+                                </td>
+                                <td>
+                                    {{pSurvey.description}}
+                                </td>
+                                <td>
+                                    <a ng-if="!pSurvey.participated" href="#/participateSurvey/{{pSurvey.id}}">
+                                        Participate
+                                    </a>
+                                    <a ng-if="pSurvey.participated" href="#/viewSurveyResults/{{pSurvey.id}}">
+                                        View Results
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if="publicSurveys.length==0">
+                        No Public Surveys Available.
+                    </div>
+                </md-tab>
+
+                <md-tab ng-if="userInfo.role==3 || userInfo.role==2" label="Created By Me">
+                    <table ng-if="createdSurveys.length!=0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Title
+                                </th>
+                                <th>
+                                    Descrption
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="cSurvey in createdSurveys">
+                                <td>
+                                    {{cSurvey.heading}}
+                                </td>
+                                <td>
+                                    {{cSurvey.description}}
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if="createdSurveys.length==0">
+                        No Surveys created by you.
+                    </div>
+                </md-tab>
+            </md-tabs>
+        </md-tab>
+        <md-tab label="Groups">
+            <md-tabs class="callout" style="margin-top:1rem">
+                <md-tab label="Groups Iam a Part Of">
+                    <table ng-if="user_groups.length!=0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Group Name
+                                </th>
+                                <th>
+                                   
+                                </th>
+                                <th>
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="usergrp in user_groups">
+                                <td>
+                                    {{usergrp.name}}
+                                </td>
+                                <td>  
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if="user_groups.length==0">
+                        You are not part of any Group.
+                    </div>
+                </md-tab>
+                <md-tab label="Groups Created By Me" ng-if="userInfo.role==3 || userInfo.role==2">
+                    <table ng-if="groups.length!=0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Group Name
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="usergrp in groups">
+                                <td>
+                                    {{usergrp.name}}
+                                </td>
+                                <td>
+                                   
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if="groups.length==0">
+                        You are not part of any Group.
+                    </div>
+
+                </md-tab>
+                <md-tab label="Edit Groups" ng-if="userInfo.role==3 || userInfo.role==2">
+                    <table ng-if="groups.length!=0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Click below to edit user groups
+                                </th>
+                                <th>
+
+                                </th>
+                                <th>
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr >
+                                <td>
+                                    <a href="#/editUserGroup/{{userInfo.userId}}">
+                                        Edit Groups
+                                    </a>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if="groups.length==0">
+                        You are not part of any Group.
+                    </div>
+
+                </md-tab>
+            </md-tabs>
+        </md-tab>
+        <md-tab ng-if="userInfo.role==3" label="Requests">
+            <table ng-if="userrequests.length!=0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    User Id
+                                </th>
+                                <th>
+                                    Descrption
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="request in userrequests">
+                                <td>
+                                    {{request.user_id}}
+                                </td>
+                                <td>
+                                    {{request.description}}
+                                </td>
+                                <td>
+                                    <a my-refresh ng-if="request.status==0" ng-click="approveRequest(request.id,request.description,$event)">
+                                        Approve
+                                    </a>
+                                    <span ng-if="request.status==1">
+                                        Approved
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if="userrequests.length==0">
+                        No Requests Available.
+                    </div>
+        </md-tab>
+    </md-tabs>
+</div>

@@ -1,0 +1,27 @@
+﻿<!--
+ The file is named: Register.
+ The file is of .html extention.
+ The file is created by Abhinav.
+ This is basically .html file named Register which provides the basic details needed for the new user to "Register".
+ -->
+<!--For Registration the fiels provided are email id, password, Confirm Password, Name, Role, Reason -->
+
+<form data-abide novalidate>
+    <div class="primary callout">
+        <div class="row">
+            <div class="large-12 columns">
+                <label for="description" role="alert">
+                    Request Description <small>required</small>
+                    <input type="text" placeholder="Description" name="description" id="description" ng-model="description">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-3 columns">
+                <button type="button" class="button round" ng-disabled="!description" ng-click="SubmitRequest($event)">Request</button>
+                <a href="#/dashboard" class="button round">Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>
+<script>$(document).foundation();</script>

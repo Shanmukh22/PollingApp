@@ -1,0 +1,54 @@
+﻿<form name="pollForm" >
+    <div class="primary callout" ng-controller="PollController" ng-init="PollResults()">
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Number of Users Participated :{{usersParticipated}}
+                </label>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Poll Title :{{pollTitle}}
+                 </label>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Description :{{pollDescription}}
+                </label>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Question :{{pollQuestion}}
+                </label>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="small-12 columns">
+                <div class="row">
+                    <div class="medium-2 columns"> Options</div>
+                    <div class="medium-10 columns"> Polls Count</div>
+                </div>
+                <ul>
+                    <li ng-repeat="pollOption in pollOptions track by $index" style="list-style-type:none;">
+                        <div class="medium-2 columns"> {{$index+1}})  {{pollOption}}</div>
+                        <div class="medium-10 columns"> {{counts[$index]}}</div>
+                        <!--<p>
+                            {{$index+1}})  {{pollOption}} &nbsp; &nbsp; count :{{counts[$index]}}
+                        </p>-->
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-3 columns">
+                <a href="#/dashboard" class="button round">OK</a>
+            </div>
+        </div>
+    </div>
+</form>

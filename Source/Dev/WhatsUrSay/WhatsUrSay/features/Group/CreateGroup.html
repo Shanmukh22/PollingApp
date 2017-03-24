@@ -1,0 +1,41 @@
+﻿<form name="groupForm">
+    <div class="primary callout" ng-controller="GroupController" ng-init="LoadMembers()">
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Group Name <small>required</small>
+                    <input type="text" placeholder="Enter Group Name" ng-model="groupTitle" ng-required="true"/>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Members <small>required</small><br />
+                    (At least 1 member must be added. Use ctrl to select multiple)<br />
+                </label>
+                <select ng-required="true" name="multipleSelect" id="multipleSelect" ng-model="select" multiple>
+                    <option ng-repeat="member in userDetails" value="{{member.emailId}}">{{member.emailId}}</option>
+                </select>
+                <!--<ul>
+                    <li ng-repeat="member in members track by $index" style="list-style-type:none;">
+                        <input type="email" placeholder="Enter person emailId (abc@xyz.com)" ng-model="member.emailId" ng-required="true"/>
+                    </li>
+                    <li style="list-style-type:none;">
+                       Add Member <i class="fi-plus" ng-click="AddMember(member)"></i>
+                    </li>
+                    <li ng-show="(members.length>1)" style="list-style-type:none;">
+                        Remove Member  <i class="fi-minus" ng-click="RemoveMember(member)"></i>
+                    </li>
+                </ul>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-3 columns">
+                <!--<button type="button" class="button round" ng-disabled="(!(groupTitle && (members.length>0)))" ng-click="CreateGroup($event)">Create Group</button>-->
+                <button type="button" class="button round" ng-disabled="groupForm.$invalid" ng-click="CreateGroup($event)">Create Group</button>
+                <a href="#/dashboard" class="button round">Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>

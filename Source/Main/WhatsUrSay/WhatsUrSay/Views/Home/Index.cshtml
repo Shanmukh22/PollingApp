@@ -1,0 +1,110 @@
+﻿<!--
+ The file is named: Error.
+ The file is of .cshtml extention.
+ The file is created by Abhinav.
+ This is basically .cshtml file named Index which provides the basic layout and acts as master page for the application.-->
+<!--Inlcides all the required scripts and css files for the application.-->
+
+<!DOCTYPE html>
+@{
+
+    Layout = null;
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/css/foundation.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link href="~/Content/css/foundation-icons/foundation-icons.css" rel="stylesheet" />
+</head>
+<body ng-cloak="" ng-app="app" ng-controller="HomeController">
+    <div id="popupContainer"></div>
+    <div class="main">
+        <header class="header">
+            <h1 class="headline">Whats Ur Say!!</h1>
+            <md-menu-bar class="header-subnav">
+                <md-menu ng-if="userInfo.isAuth && (userInfo.role==2 ||userInfo.role==3)">
+                    <a ng-click="$mdOpenMenu()">
+                        Create >>
+                    </a>
+                    <md-menu-content width="4">
+                        <ul>
+                            <li><a href="#/createPoll">Create Poll!</a></li>
+                            <li><a href="#/createSurvey">Create Survey!</a></li>
+                            <li><a href="#/createGroup">Create Group!</a></li>
+                        </ul>
+                    </md-menu-content>
+                </md-menu>
+                <md-menu ng-if="!userInfo.isAuth">
+                    <a href="#/login">
+                        Login!
+                    </a>
+                </md-menu>                
+                <md-menu ng-if="!userInfo.isAuth">
+                    <a href="#/join">
+                        Join!
+                    </a>
+                </md-menu>                
+                <md-menu ng-if="userInfo.isAuth">
+                    <a ng-click="$mdOpenMenu()" style="color:white">
+                        <span>Welcome </span>{{userInfo.name}}<span  style="color:white"><i class="fi-align-torso"></i></span>
+                    </a>
+                    <md-menu-content width="4">
+                        <ul>
+                            <li ng-if="userInfo.isAuth && userInfo.role==1"><a href="#/leadershiprequest">Request Group Leadership</a></li>
+                            <li><a href="#/dashboard">Dashboard</a></li>
+                            @*<li><a href="#">Profile!</a></li>*@
+                            <li><a ng-click="LogOut()">Log Out!</a></li>
+
+                        </ul>
+                    </md-menu-content>
+                </md-menu>
+            </md-menu-bar>           
+        </header>
+        <div class="row main" ng-view></div>
+    </div>
+
+    <footer class="footer" style="height:10%">
+        <div class="row">
+            <div class="small-3 large-6 columns">&copy;DSE's</div>
+            <div class="small-3 large-6 columns">
+                <ul class="menu">
+                    <li>
+                        <a href="#">About Us</a>
+                    </li>
+                    <li>
+                        <a href="#">Team</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/js/foundation.min.js"></script>
+    <script src="~/scripts/js/what-input.js"></script>
+    <script src="~/scripts/angular.min.js"></script>
+    <script src="~/scripts/angular-route.min.js"></script>
+    <script src="~/scripts/angular-animate.min.js"></script>
+    <script src="~/scripts/angular-aria.min.js"></script>
+    <script src="~/scripts/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+    <script src="~/scripts/app/app.js"></script>
+    <script src="~/scripts/app/HomeController.js"></script>
+    <script src="~/scripts/app/LoginController.js"></script>
+    <script src="~/scripts/app/PollController.js"></script>
+    <script src="~/scripts/app/GroupController.js"></script>
+    <script src="~/scripts/app/SurveyController.js"></script>
+    <script src="~/scripts/app/ParticipateSurveyController.js"></script>
+    <script src="~/scripts/app/RegisterController.js"></script>
+    <script src="~/scripts/app/DashboardController.js"></script>
+    <script src="~/scripts/app/EditGroupController.js"></script>
+    <script src="~/scripts/app/LeaderShipController.js"></script>
+    <script>$(document).ready(function () { $(document).foundation(); });</script>
+</body>
+</html>
+
+

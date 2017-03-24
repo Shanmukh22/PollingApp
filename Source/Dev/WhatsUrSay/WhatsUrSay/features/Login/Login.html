@@ -1,0 +1,29 @@
+﻿<!--
+ The file is named: Login.
+ The file is of .html extention.
+ The file is created by Abhinav.
+ This is basically .html file named Login which provides the basic details needed for the user to "login".
+ -->
+
+
+<!--The login has the fields email id, password, Login and Cancel buttons-->
+
+    <div class="medium-6 medium-centered large-4 large-centered columns">
+
+        <form>
+            <div class="row log-in-form">
+                <h4 class="text-center">Log in with you email account</h4>
+                <label>
+                    Email
+                    <input type="text" placeholder="somebody@example.com" ng-model="userName">
+                </label>
+                <label>
+                    Password
+                    <input type="password" placeholder="Password" ng-model="password">
+                </label>                
+                <p><a class="button expanded" ng-disabled="!(userName && password)" ng-click="Login($event)">Log In</a></p>
+                <p class="text-center"><a href="#">Cancel</a></p>
+            </div>
+        </form>
+
+    </div>
